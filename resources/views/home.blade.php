@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    @lang('login.username', ['name' => Auth::user()->name]) 
+                    <br>
+                    @lang('login.autentication')
                 </div>
             </div>
         </div>

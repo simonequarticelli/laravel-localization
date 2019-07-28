@@ -54,11 +54,11 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div style="min-width: 0" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        @lang('login.logout')
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -66,7 +66,25 @@
                                     </form>
                                 </div>
                             </li>
+
+
+
                         @endguest
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @lang('login.language') <span class="caret"></span>
+                            </a>
+
+                            <div style="min-width: 0"class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                              @endforeach
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </div>

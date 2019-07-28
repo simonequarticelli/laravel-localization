@@ -39,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        App::setLocale('it');
+        //App::setLocale('it');
         $this->middleware('guest');
     }
 
