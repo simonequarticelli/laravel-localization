@@ -13,7 +13,7 @@ return [
   'name' => 'Nome',
   'confirm_password' => 'Conferma password',
   'language' => 'Lingua',
-  'autentication' => 'Ti sei autenticato!',
+  'autentication' => 'Ti sei autenticato/a!',
   'username' => 'Ciao :name',
   'logout' => 'Esci',
 

@@ -67,6 +67,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+
                     @auth
                         <a href="{{ route('home') }}">@lang('login.home')</a>
                     @else
@@ -76,7 +77,15 @@
                             <a href="{{ route('register') }}">@lang('login.register')</a>
                         @endif
                     @endauth
+
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                      <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                          {{ $properties['native'] }}
+                      </a>
+                    @endforeach
+
                 </div>
+
             @endif
 
             <div class="content">
